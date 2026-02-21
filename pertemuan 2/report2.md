@@ -1,16 +1,10 @@
 # Laporan pertemuan ke -2 operasition sistem
 **Tanggal:** 18 Februari 2026  
 **Disusun Oleh:** Mukhammad Raffi Zabra
+**NIM:** 254107020059
+**Kelas/No:** TI-1G/24
 
----
 
-## Daftar Isi
-1. [Pendahuluan](#pendahuluan)
-2. [Perbandingan RAM vs Swap](#perbandingan-ram-vs-swap)
-3. [Analisis Investasi](#analisis-investasi)
-4. [Kesimpulan](#kesimpulan)
-
----
 ## 1.1 Deteksi Perangkat Keras di Linux
 
 ## 1. Praktikum 2.1 — Identifikasi CPU dan Memori
