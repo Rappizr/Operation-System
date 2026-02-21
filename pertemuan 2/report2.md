@@ -1,4 +1,4 @@
-# Laporan pertemuan ke -2 operasition sistem
+# Laporan pertemuan ke -2 sistem operasi
 **Tanggal:** 18 Februari 2026  
 **Disusun Oleh:** Mukhammad Raffi Zabra
 **NIM:** 254107020059

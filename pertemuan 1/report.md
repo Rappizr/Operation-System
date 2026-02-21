@@ -1,16 +1,8 @@
-# Laporan pertemuan ke -1 operasition sistem
+# Laporan pertemuan ke -1 sistem operasi
 **Tanggal:** 18 Februari 2026  
 **Disusun Oleh:** Mukhammad Raffi Zabra
-
----
-
-## Daftar Isi
-1. [Pendahuluan](#pendahuluan)
-2. [Perbandingan RAM vs Swap](#perbandingan-ram-vs-swap)
-3. [Analisis Investasi](#analisis-investasi)
-4. [Kesimpulan](#kesimpulan)
-
----
+**NIM:** 254107020059
+**Kelas/No:** TI-1G/24
 
 ## 1. Praktikum 2.1 — instalasi virtual box
 1. download oracle virtual box:
