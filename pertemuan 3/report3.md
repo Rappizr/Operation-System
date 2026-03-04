@@ -226,7 +226,7 @@ echo "--- Backup Selesai: $(date) ---"
     ./backup_script.sh
     ```
 * **Hasil Output:**
-    ```
+    
 --- Memulai Backup: Sat Feb 28 05:35:05 PM UTC 2026 ---
 2026-02-28 17:35:05 - /etc/network/
 --- Backup Selesai: Sat Feb 28 05:35:05 PM UTC 2026 ---
@@ -235,7 +235,7 @@ Rappizr7@ubuntu-server:~$ 2026-02-28 17:35:05 - /etc/network/if-up.d/ethtool
 2026-02-28 17:35:05 - /etc/network/if-pre-up.d/
 2026-02-28 17:35:05 - /etc/network/if-pre-up.d/ethtool
 2026-02-28 17:35:05 - 2026-02-28 17:35:05 - ERROR: tar: Removing leading `/' from member names
-    ```
+    
 
 ---
 
