@@ -200,7 +200,7 @@ Mem Usage: 426MB / 3996MB
     3. Eksekusi: `./backup_script`
 
 * **Isi Script:**
-    ```
+    
 FOLDER_ASAL="/etc/network" 
 NAMA_BACKUP="backup_$(date +%Y%m%d_%H%M%S).tar.gz"
 SUCCESS_LOG="backup-success.log"
@@ -209,9 +209,9 @@ ERROR_LOG="backup-error.log"
 echo "--- Memulai Backup: $(date) ---"
 
 # Proses Tar
-# -v: verbose (menampilkan file yang sedang diproses)
-# 1> >(...) : Mengambil stdout, tambah timestamp, simpan ke log sukses
-# 2> >(...) : Mengambil stderr, tambah timestamp, simpan ke log error
+ -v: verbose (menampilkan file yang sedang diproses)
+ 1> >(...) : Mengambil stdout, tambah timestamp, simpan ke log sukses
+ 2> >(...) : Mengambil stderr, tambah timestamp, simpan ke log error
 tar -cvzf "$NAMA_BACKUP" "$FOLDER_ASAL" \
     1> >(while read line; do echo "$(date '+%Y-%m-%d %H:%M:%S') - $line"; done | tee -a "$SUCCESS_LOG") \
     2> >(while read line; do echo "$(date '+%Y-%m-%d %H:%M:%S') - ERROR: $line"; done | tee -a "$ERROR_LOG")
