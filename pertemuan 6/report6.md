@@ -429,3 +429,93 @@ Tekan F9 dan amati opsi sinyal yang tersedia.
 - Di sisi kiri layar akan muncul daftar Sinyal yang bisa dikirim ke proses tersebut
 
 
+1.8 Latihan
+Latihan 6.A
+Eksplorasi Proses Sistem
+1. Jalankan ps aux –forest dan temukan proses dengan PID 1. Apa
+nama dan fungsi proses tersebut dalam sistem Linux modern?
+- root           1  0.3  0.3  22064 13240 ?        Ss   13:47   0:01 /sbin/init splash noprompt noshell
+- systemd fungsi Menjalankan semua service (sshd, cron, dll)
+
+2. Hitung berapa proses yang dimiliki oleh user root dan berapa yang
+dimiliki oleh user Anda. Mengapa root memiliki lebih banyak proses?
+- root = jumlahnya sangat banyak kira kira pulungan hhingga > 100, user = 7
+- kenapa root lebih bannyak proses? karna root menjalankan thread, system service, hardware dan system mmanagement
+
+3. Temukan semua proses yang berada dalam kondisi S. Mengapa sebagian
+besar proses di sistem berada dalam kondisi ini?
+- Kondisi S pada kolom STAT berarti: Sleeping (interruptible sleep)
+Artinya:
+Proses sedang tidak menggunakan CPU, Tapi siap dijalankan kembali jika ada event (input, network, dll)
+
+
+Latihan 6.B
+Simulasi Manajemen Job
+1. Jalankan tiga perintah sleep dengan durasi 100, 200, dan 300 detik di background. Verifikasi ketiganya dengan jobs.
+- Rappizr7@ubuntu-server:~$ sleep 100 &
+[1] 2513
+Rappizr7@ubuntu-server:~$ sleep 200 &
+[2] 6323
+Rappizr7@ubuntu-server:~$ sleep 300 &
+[3] 6815
+Rappizr7@ubuntu-server:~$ jobs
+[1]   Running                 sleep 100 &
+[2]-  Running                 sleep 200 &
+[3]+  Running                 sleep 300 &
+
+2. Bawa job kedua ke foreground, jeda dengan Ctrl+Z , lalu kembalikan
+ke background dengan bg.
+-  Rappizr7@ubuntu-server:~$ fg %2
+sleep 200
+^Z
+[2]+  Stopped                 sleep 200
+Rappizr7@ubuntu-server:~$ bg
+[2]+ sleep 200 &
+Rappizr7@ubuntu-server:~$ jobs
+[1]   Running                 sleep 100 &
+[2]-  Running                 sleep 200 &
+[3]+  Running                 sleep 300 &
+
+3. Kirim SIGSTOP ke salah satu proses, verifikasi kondisi T-nya, lalu kirim SIGCONT. Akhiri semua proses percobaan dengan pkill sleep.
+
+3. Hentikan job pertama dengan kill %1. Tampilkan kembali daftar job.
+Berapa job yang tersisa?
+-  Rappizr7@ubuntu-server:~$ kill %1
+Rappizr7@ubuntu-server:~$ jobs
+[1]   Terminated              sleep 100
+[2]-  Running                 sleep 200 &
+[3]+  Running                 sleep 300 &
+- 2 jobs
+
+
+
+Latihan 6.C
+Prioritas dan Sinyal
+1. Jalankan dua proses sleep: satu dengan nice +5 dan satu dengan nice
++15. Verifikasi nilai NI keduanya dengan ps.
+- Rappizr7@ubuntu-server:~$ nice -n 5 sleep 300 &
+nice -n 15 sleep 300 &
+[4] 16966
+[2]   Terminated              sleep 200
+[3]   Terminated              sleep 300
+[5] 16967
+Rappizr7@ubuntu-server:~$ ps -o pid,ni,comm -C sleep
+    PID  NI COMMAND
+  16966   5 sleep
+  16967  15 sleep
+
+2. Gunakan renice untuk mengubah nice proses pertama menjadi +10.
+Proses mana yang kini lebih diprioritaskan scheduler?
+- Rappizr7@ubuntu-server:~$ ps -o pid,ni,comm | grep sleep | grep " 5 "
+  16966   5 sleep
+Rappizr7@ubuntu-server:~$
+Rappizr7@ubuntu-server:~$ renice 10 -p 12345
+renice: failed to get priority for 12345 (process ID): No such process
+Rappizr7@ubuntu-server:~$ ps -o pid,ni,comm | grep sleep | grep " 5 "
+  16966   5 sleep
+Rappizr7@ubuntu-server:~$ renice 10 -p 16966
+16966 (process ID) old priority 5, new priority 10
+Rappizr7@ubuntu-server:~$ ps -o pid,ni,comm -C sleep
+    PID  NI COMMAND
+  16966  10 sleep
+  16967  15 sleep
