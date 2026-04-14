@@ -31,21 +31,21 @@ touch "ruang-nama/backup [mingguan] server.conf"
 echo "Workspace siap"
 Workspace siap
 Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$  mkdir -p ~/praktikum-os/week07-bash/{bin,backup,logs,sampel,ruang-nama}
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$  cd ~/praktikum-os/week07-bash
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ touch sample-app.conf
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$  touch logs/app-{01,02,03}.log
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ touch sampel/catatan-{a,b}.txt
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ touch sampel/backup-{01,02}.tar
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ touch "ruang-nama/laporan server april.txt"
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ touch "ruang-nama/backup [mingguan] server.conf"
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$  echo "Workspace siap"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$  cd ~/praktikum-os/week07-bash
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ touch sample-app.conf
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$  touch logs/app-{01,02,03}.log
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ touch sampel/catatan-{a,b}.txt
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ touch sampel/backup-{01,02}.tar
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ touch "ruang-nama/laporan server april.txt"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ touch "ruang-nama/backup [mingguan] server.conf"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$  echo "Workspace siap"
 Workspace siap
 
 2. Pastikan konfigurasi tersebut aktif kembali saat membuka shell login.
 
-- Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ cp ~/.bashrc ~/.bashrc.bak-praktikum-$(date +%Y%m%d)
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ cat <<'EOF' >> ~/.bashrc
-> # ===== PRAKTIKUM BASH SHELL - TUGAS 1 =====
+- Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ cp ~/.bashrc ~/.bashrc.bak-praktikum-$(date +%Y%m%d)
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ cat <<'EOF' >> ~/.bashrc
+>  ===== PRAKTIKUM BASH SHELL - TUGAS 1 =====
 # 1. PATH ke direktori bin pribadi
 export PATH="$HOME/praktikum-os/week07-bash/bin:$PATH"
 
@@ -72,10 +72,11 @@ backup_file() {
     cp "$src" "$dst/$(basename "$src").$timestamp.bak"
     echo "Backup berhasil: $dst/$(basename "$src").$timestamp.bak"
 }
-# ===== END PRAKTIKUM =====
+
+===== END PRAKTIKUM =====
 > EOF
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ source ~/.bashrc
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "Konfigurasi ditambahkan ke .bashrc"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ source ~/.bashrc
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "Konfigurasi ditambahkan ke .bashrc"
 Konfigurasi ditambahkan ke .bashrc
 
 3. Buat satu script sederhana di direktori bin pribadi, misalnya script untuk
@@ -96,35 +97,35 @@ echo "Disk /      : $(df -h / | tail -1 | awk '{print $3 "/" $2 " (" $5 ")"}')"
 echo "Shell aktif : $SHELL"
 echo "=========================================="
 > EOF
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ chmod +x ~/praktikum-os/week07-bash/bin/ringkas-sistem
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "Script ringkas-sistem siap"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ chmod +x ~/praktikum-os/week07-bash/bin/ringkas-sistem
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "Script ringkas-sistem siap"
 Script ringkas-sistem siap
 
 4. Uji dari direktori yang berbeda untuk memastikan script dapat dipanggil tanpa
 menuliskan path lengkap.
 
-- Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "=== TEST 1: Isi PATH ==="
+- Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "=== TEST 1: Isi PATH ==="
 === TEST 1: Isi PATH ===
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$  echo "$PATH" | tr ':' '\n' | grep "week07-bash/bin"
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$  echo "$PATH" | tr ':' '\n' | grep "week07-bash/bin"
 /home/Rappizr7/praktikum-os/week07-bash/bin
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo -e "\n=== TEST 2: Uji alias ll ==="
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo -e "\n=== TEST 2: Uji alias ll ==="
 
 === TEST 2: Uji alias ll ===
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ ll ~/praktikum-os/week07-bash/ | head -5
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ ll ~/praktikum-os/week07-bash/ | head -5
 total 28K
 drwxrwxr-x 7 Rappizr7 Rappizr7 4.0K Apr 13 01:13 .
 drwxrwxr-x 3 Rappizr7 Rappizr7 4.0K Apr 13 01:13 ..
 drwxrwxr-x 2 Rappizr7 Rappizr7 4.0K Apr 13 01:13 backup
 drwxrwxr-x 2 Rappizr7 Rappizr7 4.0K Apr 13 01:21 bin
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo -e "\n=== TEST 3: Uji fungsi backup_file ==="
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo -e "\n=== TEST 3: Uji fungsi backup_file ==="
 
 === TEST 3: Uji fungsi backup_file ===
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ backup_file ~/praktikum-os/week07-bash/sample-app.conf
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ backup_file ~/praktikum-os/week07-bash/sample-app.conf
 Backup berhasil: /home/Rappizr7/praktikum-os/week07-bash/backup/sample-app.conf.20260413_012320.bak
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo -e "\n=== TEST 4: Uji script ringkas-sistem ==="
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo -e "\n=== TEST 4: Uji script ringkas-sistem ==="
 
 === TEST 4: Uji script ringkas-sistem ===
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ cd /tmp
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ cd /tmp
 Rappizr7@ubuntu-server:/tmp$ ringkas-sistem
 ==========================================
         RINGKASAN SISTEM
@@ -138,7 +139,7 @@ Disk /      : 7.6G/52G (16%)
 Shell aktif : /bin/bash
 ==========================================
 Rappizr7@ubuntu-server:/tmp$ cd ~/praktikum-os/week07-bash
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$
 
 5. Simpan bukti pengujian ke file toolkit-bash-report.txt.
 Minimal luaran:
@@ -147,8 +148,8 @@ Minimal luaran:
 • output type untuk alias, fungsi, dan script,
 • file laporan toolkit-bash-report.txt.
 
-- Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ cd ~/praktikum-os/week07-bash
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "==========================================" > toolkit-bash-report.txt
+- Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ cd /praktikum-os/week07-bash
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "==========================================" > toolkit-bash-report.txt
 echo "LAPORAN TUGAS PRAKTIKUM 1" >> toolkit-bash-report.txt
 echo "Toolkit Bash Administrator Pribadi" >> toolkit-bash-report.txt
 echo "==========================================" >> toolkit-bash-report.txt
@@ -157,13 +158,13 @@ echo "Tanggal: $(date '+%Y-%m-%d %H:%M:%S')" >> toolkit-bash-report.txt
 echo "User: $(whoami)" >> toolkit-bash-report.txt
 echo "Host: $(hostname)" >> toolkit-bash-report.txt
 echo "" >> toolkit-bash-report.txt
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "------------------------------------------" >> toolkit-bash-report.txt
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "------------------------------------------" >> toolkit-bash-report.txt
 echo "1. KONFIGURASI YANG DITAMBAHKAN KE .bashrc" >> toolkit-bash-report.txt
 echo "------------------------------------------" >> toolkit-bash-report.txt
 echo "" >> toolkit-bash-report.txt
-grep -A 30 "PRAKTIKUM BASH SHELL" ~/.bashrc >> toolkit-bash-report.txt
+grep -A 30 "PRAKTIKUM BASH SHELL" /.bashrc >> toolkit-bash-report.txt
 echo "" >> toolkit-bash-report.txt
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "------------------------------------------" >> toolkit-bash-report.txt
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ echo "------------------------------------------" >> toolkit-bash-report.txt
 echo "2. HASIL \$PATH" >> toolkit-bash-report.txt
 echo "------------------------------------------" >> toolkit-bash-report.txt
 echo "$PATH" | tr ':' '\n' >> toolkit-bash-report.txt
@@ -190,20 +191,20 @@ echo "------------------------------------------" >> toolkit-bash-report.txt
 echo "" >> toolkit-bash-report.txt
 
 echo "Hasil uji alias ll:" >> toolkit-bash-report.txt
-ll ~/praktikum-os/week07-bash/ >> toolkit-bash-report.txt 2>&1
+ll /praktikum-os/week07-bash/ >> toolkit-bash-report.txt 2>&1
 echo "" >> toolkit-bash-report.txt
 
 echo "Hasil uji fungsi backup_file:" >> toolkit-bash-report.txt
-backup_file ~/praktikum-os/week07-bash/sample-app.conf >> toolkit-bash-report.txt 2>&1
+backup_file /praktikum-os/week07-bash/sample-app.conf >> toolkit-bash-report.txt 2>&1
 echo "" >> toolkit-bash-report.txt
 
 echo "Hasil uji script ringkas-sistem:" >> toolkit-bash-report.txt
 ringkas-sistem >> toolkit-bash-report.txt 2>&1
 echo "" >> toolkit-bash-report.txt
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ echo "==========================================" >> toolkit-bash-report.txt
+Rappizr7@ubuntu-server/praktikum-os/week07-bash$ echo "==========================================" >> toolkit-bash-report.txt
 echo "LAPORAN SELESAI" >> toolkit-bash-report.txt
 echo "==========================================" >> toolkit-bash-report.txt
-Rappizr7@ubuntu-server:~/praktikum-os/week07-bash$ cat toolkit-bash-report.txt
+Rappizr7@ubuntu-server:/praktikum-os/week07-bash$ cat toolkit-bash-report.txt
 ==========================================
 LAPORAN TUGAS PRAKTIKUM 1
 Toolkit Bash Administrator Pribadi
